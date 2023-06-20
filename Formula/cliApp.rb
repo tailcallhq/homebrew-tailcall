@@ -8,7 +8,7 @@ class Cliapp < Formula
     depends_on "openjdk@11"
   
     def install
-      bin.install "tailcall_cli_main"
+      bin.install "bin/tailcall_cli_main"
     end
   
     test do
