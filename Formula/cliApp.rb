@@ -1,4 +1,4 @@
-class CliApp < Formula
+class cliApp < Formula
     desc "Tailcall CLI App"
     homepage "https://github.com/tailcallhq/tailcall/"
     url "https://github.com/tailcallhq/tailcall/releases/download/v0.1.0/tailcall-v0.1.0.zip"
