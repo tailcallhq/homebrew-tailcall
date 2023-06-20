@@ -9,7 +9,11 @@ class Cliapp < Formula
   
     def install
       libexec.install Dir["*"]
-      bin.write_jar_script libexec/"lib/cli-assembly-0.1.0-SNAPSHOT.jar", "tc"
+      (bin/"tc").write <<~EOS
+      #!/bin/sh
+      exec java -jar #{lib}/cli-assembly-0.1.0-SNAPSHOT.jar "$@"
+    EOS
+      
     end
   
     test do
