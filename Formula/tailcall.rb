@@ -1,4 +1,4 @@
-class Cliapp < Formula
+class Tailcall < Formula
   desc "Tailcall CLI App"
   homepage "https://github.com/tailcallhq/tailcall/"
   url "https://github.com/tailcallhq/tailcall/releases/download/v0.1.0/tailcall-v0.1.0.zip"
@@ -9,10 +9,7 @@ class Cliapp < Formula
 
   def install
     libexec.install Dir["*"]
-    (bin/"tc").write <<~EOS
-      #!/bin/sh
-       #{libexec}/bin/tailcall_cli_main "$@"
-    EOS
+    bin.install_symlink "#{libexec}/bin/tailcall_cli_main" => "tc"
   end
 
   test do
