@@ -8,11 +8,12 @@ class Cliapp < Formula
     depends_on "openjdk@11"
   
     def install
-      bin.install "bin/tailcall_cli_main"
+      libexec.install Dir["*"]
+      bin.write_jar_script libexec/"lib/cli-assembly-SNAPSHOT-0.1.0.jar", "tc"
     end
   
     test do
-      system "#{bin}/tailcall_cli_main"
+      system "#{bin}/tc"
     end
   end
   
