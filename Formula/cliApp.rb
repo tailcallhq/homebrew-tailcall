@@ -11,7 +11,7 @@ class Cliapp < Formula
       libexec.install Dir["*"]
       (bin/"tc").write <<~EOS
       #!/bin/sh
-      exec java -jar #{lib}/cli-assembly-0.1.0-SNAPSHOT.jar "$@"
+      exec java -jar #{libexec}/lib/cli-assembly-0.1.0-SNAPSHOT.jar "$@"
     EOS
       
     end
