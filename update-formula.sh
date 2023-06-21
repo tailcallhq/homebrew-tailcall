@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TAG_NAME=$2
+TAG_NAME=$1
 
 echo "Setting up variables..."
 URL="https://github.com/tailcallhq/tailcall/releases/download/${TAG_NAME}/tailcall-${TAG_NAME}.zip"
