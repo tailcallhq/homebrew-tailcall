@@ -10,6 +10,7 @@ class Tailcall < Formula
   def install
     libexec.install Dir["*"]
     bin.install_symlink "#{libexec}/bin/tailcall_cli_main" => "tc"
+    bin.install_symlink "#{libexec}/bin/tailcall_server_main" => "tc-server"
   end
 
   test do
