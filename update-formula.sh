@@ -45,3 +45,8 @@ else
 fi
 
 echo "Script execution complete."
+
+git config user.name "GitHub Actions"
+git config user.email "actions@github.com"
+git commit -am "update tailcall cli version: ${TAG_NAME}"
+git push
