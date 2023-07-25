@@ -1,9 +1,9 @@
 class Tailcall < Formula
   desc "Tailcall CLI App"
   homepage "https://github.com/tailcallhq/tailcall/"
-  url "https://github.com/tailcallhq/tailcall/releases/download/v0.5.0/tailcall-v0.5.0.zip"
-  sha256 "5cabccd34964406c8867983d79b3e96d0a31490014d7faf0b52bb2480cf203bd"
-  version "v0.5.0"
+  url "https://github.com/tailcallhq/tailcall/releases/download/v0.5.1/tailcall-v0.5.1.zip"
+  sha256 "c91724c8d98bcd95c90adb09bee0cef9170595aa77e7726fcbb51518eb986ddf"
+  version "v0.5.1"
 
   depends_on "openjdk@11"
 
