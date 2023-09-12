@@ -1,18 +1,24 @@
 class Tailcall < Formula
   desc "Tailcall CLI App"
   homepage "https://github.com/tailcallhq/tailcall/"
-  url "https://github.com/tailcallhq/tailcall/releases/download/v0.8.0/tailcall-v0.8.0.zip"
-  sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
-  version "v0.8.0"
 
-  depends_on "openjdk@11"
-
-  def install
-    libexec.install Dir["*"]
-    bin.install_symlink "#{libexec}/bin/tailcall" => "tc"
+  # Based on the architecture, set the URL
+  if Hardware::CPU.intel?
+    url "https://github.com/tailcallhq/tailcall/releases/download/v0.8.0/tailcall-x86_64-apple-darwin"
+    sha256 "7470f2ccb7f2a13e192fbbe1d7f6fe9baaa4105a77688b2171acd12e582afd67"
+  elsif Hardware::CPU.arm?
+    url "https://github.com/tailcallhq/tailcall/releases/download/v0.8.0/tailcall-aarch64-apple-darwin"
+    sha256 "a6bf8769617bce37da1dd76fda5e435561556af0b00dfe5d87176109203b01d0"
   end
 
-  test do
-    system "#{bin}/tc"
+  version "v0.8.0"
+
+  def install
+    if Hardware::CPU.intel?
+        executable_name = "tailcall-x86_64-apple-darwin"
+    elsif Hardware::CPU.arm?
+        executable_name = "tailcall-aarch64-apple-darwin"
+    end
+    bin.install executable_name => "tc"
   end
 end
