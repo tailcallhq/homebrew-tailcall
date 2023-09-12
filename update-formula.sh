@@ -22,21 +22,21 @@ cd Formula || exit
 
 echo "Updating URLs and SHA256s in tailcall.rb..."
 
-# Determining the type of sed command to use based on OS
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    SED_INPLACE="sed -i ''"
+    # macOS uses a different syntax for 'sed -i'
+    sed -i '' -e "/if Hardware::CPU.intel?/,/elsif Hardware::CPU.arm?/ s|url \".*\"|url \"${URL_X86_64}\"|" tailcall.rb
+    sed -i '' -e "/if Hardware::CPU.intel?/,/elsif Hardware::CPU.arm?/ s|sha256 \".*\"|sha256 \"${SHA256_X86_64}\"|" tailcall.rb
+    sed -i '' -e "/elsif Hardware::CPU.arm?/,/end/ s|url \".*\"|url \"${URL_AARCH64}\"|" tailcall.rb
+    sed -i '' -e "/elsif Hardware::CPU.arm?/,/end/ s|sha256 \".*\"|sha256 \"${SHA256_AARCH64}\"|" tailcall.rb
+    sed -i '' -e "s|version \".*\"|version \"${TAG_NAME}\"|" tailcall.rb
 else
-    SED_INPLACE="sed -i"
+    # For Linux
+    sed -i "/if Hardware::CPU.intel?/,/elsif Hardware::CPU.arm?/ s|url \".*\"|url \"${URL_X86_64}\"|" tailcall.rb
+    sed -i "/if Hardware::CPU.intel?/,/elsif Hardware::CPU.arm?/ s|sha256 \".*\"|sha256 \"${SHA256_X86_64}\"|" tailcall.rb
+    sed -i "/elsif Hardware::CPU.arm?/,/end/ s|url \".*\"|url \"${URL_AARCH64}\"|" tailcall.rb
+    sed -i "/elsif Hardware::CPU.arm?/,/end/ s|sha256 \".*\"|sha256 \"${SHA256_AARCH64}\"|" tailcall.rb
+    sed -i "s|version \".*\"|version \"${TAG_NAME}\"|" tailcall.rb
 fi
-
-$SED_INPLACE "/if Hardware::CPU.intel?/,/elsif Hardware::CPU.arm?/ s|url \".*\"|url \"${URL_X86_64}\"|" tailcall.rb
-$SED_INPLACE "/if Hardware::CPU.intel?/,/elsif Hardware::CPU.arm?/ s|sha256 \".*\"|sha256 \"${SHA256_X86_64}\"|" tailcall.rb
-
-$SED_INPLACE "/elsif Hardware::CPU.arm?/,/end/ s|url \".*\"|url \"${URL_AARCH64}\"|" tailcall.rb
-$SED_INPLACE "/elsif Hardware::CPU.arm?/,/end/ s|sha256 \".*\"|sha256 \"${SHA256_AARCH64}\"|" tailcall.rb
-
-echo "Updating version in tailcall.rb..."
-$SED_INPLACE "s|version \".*\"|version \"${TAG_NAME}\"|" tailcall.rb
 
 echo "Script execution complete."
 
