@@ -4,14 +4,14 @@ class Tailcall < Formula
 
   # Based on the architecture, set the URL
   if Hardware::CPU.intel?
-    url "https://github.com/tailcallhq/tailcall/releases/download/v0.13.0/tailcall-x86_64-apple-darwin"
-    sha256 "ed125b2701c53acf4b0d8b83c910b4699ee65d8be39420952b920802a08ea7d3"
+    url "https://github.com/tailcallhq/tailcall/releases/download/v0.14.0/tailcall-x86_64-apple-darwin"
+    sha256 "6cf46935e97ab3e1ea8091f7d442160c496d451dc029c175ff34406bbf4ca8c7"
   elsif Hardware::CPU.arm?
-    url "https://github.com/tailcallhq/tailcall/releases/download/v0.13.0/tailcall-aarch64-apple-darwin"
-    sha256 "ca033c1b517a2dfc5596f1006ec60ef8a1b33df8151be85dd513caf532caeb07"
+    url "https://github.com/tailcallhq/tailcall/releases/download/v0.14.0/tailcall-aarch64-apple-darwin"
+    sha256 "2adc72caf89108469320e8bf5507444fb40113e288b665fc7a4741843289d848"
   end
 
-  version "v0.13.0"
+  version "v0.14.0"
 
   def install
     if Hardware::CPU.intel?
