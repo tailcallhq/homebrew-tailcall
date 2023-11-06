@@ -4,7 +4,7 @@ TAG_NAME=$1
 
 echo "Setting up variables..."
 
-BASE_URL="https://github.com/tailcallhq/tailcall/releases/download/${TAG_NAME}"
+BASE_URL="https://tailcall.gateway.scarf.sh/${TAG_NAME}"
 URL_X86_64="${BASE_URL}/tailcall-x86_64-apple-darwin"
 URL_AARCH64="${BASE_URL}/tailcall-aarch64-apple-darwin"
 
