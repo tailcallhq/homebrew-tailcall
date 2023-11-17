@@ -19,6 +19,6 @@ class Tailcall < Formula
     elsif Hardware::CPU.arm?
         executable_name = "tailcall-aarch64-apple-darwin"
     end
-    bin.install executable_name => "tc"
+    bin.install executable_name => "tailcall"
   end
 end
