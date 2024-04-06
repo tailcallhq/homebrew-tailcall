@@ -4,14 +4,14 @@ class Tailcall < Formula
 
   # Based on the architecture, set the URL
   if Hardware::CPU.intel?
-    url "https://tailcall.gateway.scarf.sh/v0.74.5/tailcall-x86_64-apple-darwin"
-    sha256 "d6e119a5c380b6890846316073e4eee99d27865aa68f7c51f813ecdabde13d6a"
+    url "https://tailcall.gateway.scarf.sh/v0.74.6/tailcall-x86_64-apple-darwin"
+    sha256 "3696931acc875676dde07ec6119bb4531afb7bc3c994ada6538c72da643f4dac"
   elsif Hardware::CPU.arm?
-    url "https://tailcall.gateway.scarf.sh/v0.74.5/tailcall-aarch64-apple-darwin"
-    sha256 "5937a55cec85206a794535d0bbbe685351a7016466dc1471f0e957d928d8c0bf"
+    url "https://tailcall.gateway.scarf.sh/v0.74.6/tailcall-aarch64-apple-darwin"
+    sha256 "9b49d657396c96efb7f75aad85475e4ac1d836cab210fdf4c749400d00e8001b"
   end
 
-  version "v0.74.5"
+  version "v0.74.6"
 
   def install
     if Hardware::CPU.intel?
